@@ -224,3 +224,169 @@
 
 </body>
 </html>
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Tablas - 3 Gráficas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* ESTILOS GENERALES */
+        body { font-family: sans-serif; background-color: #f4f4f9; padding: 20px; text-align: center; }
+        
+        /* CAJAS DE SECCIÓN */
+        section {
+            background: white;
+            margin: 0 auto 50px auto; /* Separación entre secciones */
+            padding: 30px;
+            max-width: 800px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h2 { border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+
+        /* TABLAS */
+        .table-container { overflow-x: auto; margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; min-width: 500px; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        
+        /* GRÁFICAS */
+        .chart-box {
+            width: 100%;
+            max-width: 500px; /* Tamaño controlado de la gráfica */
+            margin: 0 auto;
+        }
+
+        /* COLORES ESPECÍFICOS */
+        .green-theme h2 { color: #27ae60; border-color: #27ae60; }
+        .green-theme th { background-color: #27ae60; color: white; }
+        
+        .purple-theme h2 { color: #8e44ad; border-color: #8e44ad; }
+        .purple-theme th { background-color: #8e44ad; color: white; }
+
+        .blue-theme h2 { color: #2980b9; border-color: #2980b9; }
+        .blue-theme th { background-color: #2980b9; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1>📊 Reporte Estadístico: Tablas y Gráficas</h1>
+    <p>Un ejemplo completo con 100 datos por cada tipo de variable.</p>
+
+    <section class="green-theme">
+        <h2>1. Cuantitativos Discretos (Hermanos)</h2>
+        <p><i>Gráfica correspondiente: Barras</i></p>
+
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Nº Hermanos</th><th>Frecuencia</th><th>%</th></tr></thead>
+                <tbody>
+                    <tr><td>0</td><td>16</td><td>16%</td></tr>
+                    <tr><td><b>1 (Moda)</b></td><td><b>38</b></td><td><b>38%</b></td></tr>
+                    <tr><td>2</td><td>29</td><td>29%</td></tr>
+                    <tr><td>3</td><td>8</td><td>8%</td></tr>
+                    <tr><td>4</td><td>5</td><td>5%</td></tr>
+                    <tr><td>5</td><td>3</td><td>3%</td></tr>
+                    <tr><td>6</td><td>1</td><td>1%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="chart-box">
+            <canvas id="chartDiscreto"></canvas>
+        </div>
+    </section>
+
+    <section class="purple-theme">
+        <h2>2. Cuantitativos Continuos (Tiempo)</h2>
+        <p><i>Gráfica correspondiente: Histograma</i></p>
+
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Minutos (Intervalo)</th><th>Frecuencia</th><th>%</th></tr></thead>
+                <tbody>
+                    <tr><td>10 - 19</td><td>32</td><td>32%</td></tr>
+                    <tr><td><b>20 - 29 (Moda)</b></td><td><b>30</b></td><td><b>30%</b></td></tr>
+                    <tr><td>30 - 39</td><td>20</td><td>20%</td></tr>
+                    <tr><td>40 - 49</td><td>12</td><td>12%</td></tr>
+                    <tr><td>50 - 60</td><td>6</td><td>6%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="chart-box">
+            <canvas id="chartContinuo"></canvas>
+        </div>
+    </section>
+
+    <section class="blue-theme">
+        <h2>3. Cualitativos (Marcas de Celular)</h2>
+        <p><i>Gráfica correspondiente: Pastel (Pie)</i></p>
+
+        <div class="table-container">
+            <table>
+                <thead><tr><th>Marca</th><th>Frecuencia</th><th>%</th></tr></thead>
+                <tbody>
+                    <tr><td><b>Samsung</b></td><td><b>36</b></td><td><b>36%</b></td></tr>
+                    <tr><td>iPhone</td><td>30</td><td>30%</td></tr>
+                    <tr><td>Xiaomi</td><td>19</td><td>19%</td></tr>
+                    <tr><td>Motorola</td><td>10</td><td>10%</td></tr>
+                    <tr><td>Huawei</td><td>5</td><td>5%</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="chart-box">
+            <canvas id="chartCualitativo"></canvas>
+        </div>
+    </section>
+
+    <script>
+        // GRÁFICA 1: BARRAS (VERDE)
+        new Chart(document.getElementById('chartDiscreto'), {
+            type: 'bar',
+            data: {
+                labels: ['0', '1', '2', '3', '4', '5', '6'],
+                datasets: [{
+                    label: 'Estudiantes',
+                    data: [16, 38, 29, 8, 5, 3, 1],
+                    backgroundColor: '#2ecc71'
+                }]
+            }
+        });
+
+        // GRÁFICA 2: HISTOGRAMA (MORADO)
+        new Chart(document.getElementById('chartContinuo'), {
+            type: 'bar',
+            data: {
+                labels: ['10-19', '20-29', '30-39', '40-49', '50-60'],
+                datasets: [{
+                    label: 'Empleados',
+                    data: [32, 30, 20, 12, 6],
+                    backgroundColor: '#9b59b6',
+                    barPercentage: 1.0, 
+                    categoryPercentage: 1.0
+                }]
+            }
+        });
+
+        // GRÁFICA 3: PASTEL (AZUL Y COLORES)
+        new Chart(document.getElementById('chartCualitativo'), {
+            type: 'pie',
+            data: {
+                labels: ['Samsung', 'iPhone', 'Xiaomi', 'Motorola', 'Huawei'],
+                datasets: [{
+                    data: [36, 30, 19, 10, 5],
+                    backgroundColor: ['#3498db', '#95a5a6', '#e67e22', '#1abc9c', '#e74c3c']
+                }]
+            }
+        });
+    </script>
+
+</body>
+</html>
