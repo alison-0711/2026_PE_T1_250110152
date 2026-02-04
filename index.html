@@ -1,370 +1,225 @@
-<h3>1. Datos Crudos (Matriz 10x10)</h3>
-<table width="100%">
-  <tbody>
-    <tr><td>3</td><td>5</td><td>2</td><td>1</td><td>4</td><td>6</td><td>2</td><td>1</td><td>1</td><td>3</td></tr>
-    <tr><td>4</td><td>2</td><td>5</td><td>7</td><td>3</td><td>2</td><td>1</td><td>8</td><td>3</td><td>4</td></tr>
-    <tr><td>2</td><td>1</td><td>5</td><td>3</td><td>2</td><td>6</td><td>4</td><td>2</td><td>1</td><td>3</td></tr>
-    <tr><td>5</td><td>2</td><td>7</td><td>3</td><td>4</td><td>9</td><td>2</td><td>1</td><td>3</td><td>5</td></tr>
-    <tr><td>4</td><td>2</td><td>6</td><td>1</td><td>2</td><td>3</td><td>8</td><td>4</td><td>2</td><td>5</td></tr>
-    <tr><td>1</td><td>3</td><td>7</td><td>2</td><td>4</td><td>6</td><td>5</td><td>2</td><td>3</td><td>1</td></tr>
-    <tr><td>4</td><td>2</td><td>5</td><td>3</td><td>1</td><td>6</td><td>2</td><td>4</td><td>7</td><td>3</td></tr>
-    <tr><td>5</td><td>2</td><td>8</td><td>4</td><td>1</td><td>3</td><td>6</td><td>2</td><td>5</td><td>10</td></tr>
-    <tr><td>3</td><td>4</td><td>2</td><td>1</td><td>5</td><td>7</td><td>3</td><td>2</td><td>6</td><td>4</td></tr>
-    <tr><td>1</td><td>3</td><td>9</td><td>2</td><td>5</td><td>8</td><td>4</td><td>2</td><td>1</td><td>3</td></tr>
-  </tbody>
-</table>
-
-<h3>2. Tabla de Frecuencias</h3>
-<table width="100%">
-    <thead>
-        <tr>
-            <th>Artículos (x)</th>
-            <th>Frecuencia (f)</th>
-            <th>%</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr><td>1</td><td>15</td><td>15%</td></tr>
-        <tr><td><b>2 (Moda)</b></td><td><b>22</b></td><td><b>22%</b></td></tr>
-        <tr><td>3</td><td>18</td><td>18%</td></tr>
-        <tr><td>4</td><td>15</td><td>15%</td></tr>
-        <tr><td>5</td><td>12</td><td>12%</td></tr>
-        <tr><td>6</td><td>7</td><td>7%</td></tr>
-        <tr><td>7</td><td>5</td><td>5%</td></tr>
-        <tr><td>8</td><td>4</td><td>4%</td></tr>
-        <tr><td>9</td><td>2</td><td>2%</td></tr>
-        <tr><td>10</td><td>1</td><td>1%</td></tr>
-        <tr><td><b>TOTAL</b></td><td><b>100</b></td><td><b>100%</b></td></tr>
-    </tbody>
-</table>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos Continuos - Estaturas</title>
+    <title>Estadística: 3 Tipos de Datos</title>
     <style>
-        /* ESTILOS CSS GENERALES */
+        /* --- ESTILOS GENERALES (DISEÑO) --- */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f0f2f5;
             color: #333;
+            margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        h1 { color: #4a148c; } /* Morado para diferenciar */
-        
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #9c27b0; /* Línea morada */
-            padding-bottom: 10px;
-            margin-top: 30px;
-        }
-
-        /* ESTILOS PARA LAS TABLAS */
-        .table-container {
-            overflow-x: auto;
-            width: 100%;
-            max-width: 900px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-
-        .styled-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #ffffff;
-            font-size: 0.9em;
-        }
-
-        .styled-table thead tr {
-            background-color: #6a1b9a; /* Encabezado Morado */
-            color: #ffffff;
-            text-align: center;
-        }
-
-        .styled-table th, .styled-table td {
-            padding: 12px 15px;
-            text-align: center;
-            border: 1px solid #e0e0e0;
-        }
-
-        .styled-table tbody tr:nth-of-type(even) { background-color: #f9f9f9; }
-        .styled-table tbody tr:hover { background-color: #f3e5f5; }
-
-        .total-row {
-            font-weight: bold;
-            background-color: #e1bee7 !important;
-        }
-        
-        /* Fuente monoespaciada para los números decimales */
-        .matrix-data td {
-            font-family: 'Consolas', 'Monaco', monospace;
-            color: #444;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>📏 Datos Cuantitativos Continuos</h1>
-    <p>Muestra: 100 Estudiantes | Variable: Estatura (metros)</p>
-
-    <h2>1. Datos Crudos (Matriz 10x10)</h2>
-    <p><i>Nota cómo los valores tienen decimales y son muy variados.</i></p>
-    <div class="table-container">
-        <table class="styled-table matrix-data">
-            <tbody>
-                <tr><td>1.75</td><td>1.68</td><td>1.82</td><td>1.59</td><td>1.70</td><td>1.65</td><td>1.78</td><td>1.62</td><td>1.74</td><td>1.80</td></tr>
-                <tr><td>1.66</td><td>1.72</td><td>1.69</td><td>1.85</td><td>1.55</td><td>1.76</td><td>1.68</td><td>1.71</td><td>1.64</td><td>1.79</td></tr>
-                <tr><td>1.73</td><td>1.81</td><td>1.60</td><td>1.75</td><td>1.67</td><td>1.70</td><td>1.88</td><td>1.63</td><td>1.72</td><td>1.58</td></tr>
-                <tr><td>1.77</td><td>1.65</td><td>1.74</td><td>1.69</td><td>1.83</td><td>1.71</td><td>1.66</td><td>1.78</td><td>1.62</td><td>1.75</td></tr>
-                <tr><td>1.61</td><td>1.76</td><td>1.84</td><td>1.68</td><td>1.70</td><td>1.57</td><td>1.73</td><td>1.79</td><td>1.65</td><td>1.72</td></tr>
-                <tr><td>1.86</td><td>1.64</td><td>1.75</td><td>1.69</td><td>1.71</td><td>1.80</td><td>1.67</td><td>1.74</td><td>1.59</td><td>1.77</td></tr>
-                <tr><td>1.63</td><td>1.78</td><td>1.70</td><td>1.66</td><td>1.82</td><td>1.73</td><td>1.60</td><td>1.75</td><td>1.68</td><td>1.71</td></tr>
-                <tr><td>1.90</td><td>1.65</td><td>1.72</td><td>1.79</td><td>1.64</td><td>1.76</td><td>1.56</td><td>1.81</td><td>1.69</td><td>1.74</td></tr>
-                <tr><td>1.67</td><td>1.73</td><td>1.85</td><td>1.70</td><td>1.62</td><td>1.78</td><td>1.71</td><td>1.66</td><td>1.75</td><td>1.83</td></tr>
-                <tr><td>1.58</td><td>1.74</td><td>1.69</td><td>1.77</td><td>1.80</td><td>1.65</td><td>1.72</td><td>1.68</td><td>1.76</td><td>1.70</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h2>2. Tabla de Frecuencias (Agrupada en Intervalos)</h2>
-    <p><i>Al ser datos continuos, no contamos número por número, sino por rangos.</i></p>
-    <div class="table-container">
-        <table class="styled-table">
-            <thead>
-                <tr>
-                    <th>Intervalo de Estatura (m)</th>
-                    <th>Marca de Clase ($x_i$)</th>
-                    <th>Frecuencia Absoluta ($f_i$)</th>
-                    <th>Frecuencia Relativa (%)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1.55 - 1.59</td><td>1.57</td><td>6</td><td>6%</td>
-                </tr>
-                <tr>
-                    <td>1.60 - 1.64</td><td>1.62</td><td>10</td><td>10%</td>
-                </tr>
-                <tr>
-                    <td>1.65 - 1.69</td><td>1.67</td><td>22</td><td>22%</td>
-                </tr>
-                <tr style="border-left: 5px solid #ff9800;">
-                    <td><b>1.70 - 1.74 (Moda)</b></td><td>1.72</td><td>26</td><td>26%</td>
-                </tr>
-                <tr>
-                    <td>1.75 - 1.79</td><td>1.77</td><td>21</td><td>21%</td>
-                </tr>
-                <tr>
-                    <td>1.80 - 1.84</td><td>1.82</td><td>10</td><td>10%</td>
-                </tr>
-                <tr>
-                    <td>1.85 - 1.90</td><td>1.87</td><td>5</td><td>5%</td>
-                </tr>
-                <tr class="total-row">
-                    <td colspan="2">TOTAL</td><td>100</td><td>100%</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estadística: Discretos vs Continuos</title>
-    <style>
-        /* ESTILOS GENERALES */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h1 {
-            color: #2c3e50;
+        header {
             text-align: center;
             margin-bottom: 40px;
-            font-size: 2.5em;
-        }
-
-        h2 {
-            margin-top: 50px;
-            padding-bottom: 10px;
-            width: 100%;
-            max-width: 900px;
-        }
-
-        .section-discrete h2 { border-bottom: 3px solid #009879; color: #006b55; }
-        .section-continuous h2 { border-bottom: 3px solid #6a1b9a; color: #4a148c; }
-
-        p { max-width: 900px; line-height: 1.6; }
-
-        /* ESTILOS DE TABLAS */
-        .table-container {
-            overflow-x: auto;
-            width: 100%;
-            max-width: 900px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 20px;
             background: white;
-            border-radius: 8px;
-        }
-
-        .styled-table {
             width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9em;
+            max-width: 900px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .styled-table th, .styled-table td {
-            padding: 12px 15px;
-            text-align: center;
+        h1 { margin: 0; color: #2c3e50; }
+        p.subtitle { color: #666; font-style: italic; }
+
+        /* --- CONTENEDORES DE LAS SECCIONES --- */
+        section {
+            background: white;
+            width: 100%;
+            max-width: 900px;
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 { border-bottom: 3px solid #ccc; padding-bottom: 10px; margin-top: 0; }
+        h3 { margin-top: 30px; font-size: 1.1em; color: #555; }
+
+        /* --- ESTILOS DE LAS TABLAS --- */
+        .table-scroll {
+            overflow-x: auto; /* Permite deslizar en celular */
+            border-radius: 8px;
             border: 1px solid #ddd;
         }
 
-        /* TEMA VERDE (DISCRETOS) */
-        .green-theme thead tr { background-color: #009879; color: #ffffff; }
-        .green-theme tbody tr:nth-of-type(even) { background-color: #f3f3f3; }
-        .green-theme tbody tr:hover { background-color: #e0f2f1; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+            text-align: center;
+            min-width: 600px; /* Asegura que no se aplasten los datos */
+        }
 
-        /* TEMA MORADO (CONTINUOS) */
-        .purple-theme thead tr { background-color: #6a1b9a; color: #ffffff; }
-        .purple-theme tbody tr:nth-of-type(even) { background-color: #f3e5f5; }
-        .purple-theme tbody tr:hover { background-color: #e1bee7; }
+        th, td { padding: 10px; border: 1px solid #eee; }
+        th { color: white; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Estilo para matrices de datos */
-        .matrix-data td {
+        /* Estilo especial para la matriz de 100 datos (letra pequeña) */
+        .data-matrix td {
             font-family: 'Consolas', monospace;
-            font-weight: bold;
             color: #555;
             font-size: 0.85em;
         }
 
+        /* --- TEMA 1: DISCRETOS (VERDE) --- */
+        .discrete h2 { border-color: #27ae60; color: #27ae60; }
+        .discrete th { background-color: #27ae60; }
+        .discrete tr:nth-child(even) { background-color: #eafaf1; }
+
+        /* --- TEMA 2: CONTINUOS (MORADO) --- */
+        .continuous h2 { border-color: #8e44ad; color: #8e44ad; }
+        .continuous th { background-color: #8e44ad; }
+        .continuous tr:nth-child(even) { background-color: #f4ecf7; }
+
+        /* --- TEMA 3: CUALITATIVOS (AZUL) --- */
+        .qualitative h2 { border-color: #2980b9; color: #2980b9; }
+        .qualitative th { background-color: #2980b9; }
+        .qualitative tr:nth-child(even) { background-color: #ebf5fb; }
+
+        /* Fila de Total */
         .total-row { font-weight: bold; background-color: #ddd !important; }
     </style>
 </head>
 <body>
 
-    <h1>📊 Proyecto de Estadística</h1>
-    <p>Comparación de dos conjuntos de datos de 100 observaciones cada uno.</p>
+    <header>
+        <h1>📊 Proyecto de Estadística</h1>
+        <p class="subtitle">Presentación de 100 datos para tres tipos de variables estadísticas.</p>
+    </header>
 
-    <div class="section-discrete">
+    <section class="discrete">
         <h2>1. Datos Cuantitativos Discretos</h2>
-        <p><b>Escenario:</b> Conteo de artículos en la caja rápida de un supermercado.<br>
-        <b>Características:</b> Números enteros, resultado de contar.</p>
+        <p><b>Variable:</b> Número de hermanos por estudiante.<br>
+        <b>Tipo:</b> Entero (conteo).<br>
+        <b>Muestra:</b> 100 estudiantes.</p>
 
-        <h3>Matriz de Datos (100 observaciones)</h3>
-        <div class="table-container">
-            <table class="styled-table green-theme matrix-data">
-                <tbody>
-                    <tr><td>3</td><td>5</td><td>2</td><td>1</td><td>4</td><td>6</td><td>2</td><td>1</td><td>1</td><td>3</td></tr>
-                    <tr><td>4</td><td>2</td><td>5</td><td>7</td><td>3</td><td>2</td><td>1</td><td>8</td><td>3</td><td>4</td></tr>
-                    <tr><td>2</td><td>1</td><td>5</td><td>3</td><td>2</td><td>6</td><td>4</td><td>2</td><td>1</td><td>3</td></tr>
-                    <tr><td>5</td><td>2</td><td>7</td><td>3</td><td>4</td><td>9</td><td>2</td><td>1</td><td>3</td><td>5</td></tr>
-                    <tr><td>4</td><td>2</td><td>6</td><td>1</td><td>2</td><td>3</td><td>8</td><td>4</td><td>2</td><td>5</td></tr>
-                    <tr><td>1</td><td>3</td><td>7</td><td>2</td><td>4</td><td>6</td><td>5</td><td>2</td><td>3</td><td>1</td></tr>
-                    <tr><td>4</td><td>2</td><td>5</td><td>3</td><td>1</td><td>6</td><td>2</td><td>4</td><td>7</td><td>3</td></tr>
-                    <tr><td>5</td><td>2</td><td>8</td><td>4</td><td>1</td><td>3</td><td>6</td><td>2</td><td>5</td><td>10</td></tr>
-                    <tr><td>3</td><td>4</td><td>2</td><td>1</td><td>5</td><td>7</td><td>3</td><td>2</td><td>6</td><td>4</td></tr>
-                    <tr><td>1</td><td>3</td><td>9</td><td>2</td><td>5</td><td>8</td><td>4</td><td>2</td><td>1</td><td>3</td></tr>
-                </tbody>
+        <h3>➤ Los 100 Datos (Matriz)</h3>
+        <div class="table-scroll">
+            <table class="data-matrix">
+                <tr><td>2</td><td>1</td><td>0</td><td>3</td><td>1</td><td>2</td><td>1</td><td>0</td><td>4</td><td>2</td></tr>
+                <tr><td>1</td><td>2</td><td>1</td><td>0</td><td>5</td><td>1</td><td>2</td><td>3</td><td>1</td><td>0</td></tr>
+                <tr><td>2</td><td>1</td><td>1</td><td>2</td><td>0</td><td>1</td><td>3</td><td>2</td><td>1</td><td>4</td></tr>
+                <tr><td>0</td><td>1</td><td>2</td><td>1</td><td>1</td><td>6</td><td>2</td><td>0</td><td>1</td><td>2</td></tr>
+                <tr><td>3</td><td>2</td><td>1</td><td>0</td><td>2</td><td>1</td><td>1</td><td>2</td><td>5</td><td>1</td></tr>
+                <tr><td>1</td><td>0</td><td>2</td><td>1</td><td>3</td><td>2</td><td>1</td><td>0</td><td>1</td><td>2</td></tr>
+                <tr><td>2</td><td>4</td><td>1</td><td>1</td><td>2</td><td>0</td><td>3</td><td>1</td><td>2</td><td>1</td></tr>
+                <tr><td>1</td><td>2</td><td>0</td><td>1</td><td>2</td><td>1</td><td>4</td><td>2</td><td>1</td><td>0</td></tr>
+                <tr><td>0</td><td>1</td><td>3</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td><td>1</td><td>2</td></tr>
+                <tr><td>2</td><td>1</td><td>1</td><td>5</td><td>2</td><td>0</td><td>1</td><td>3</td><td>2</td><td>1</td></tr>
             </table>
         </div>
 
-        <h3>Tabla de Frecuencias</h3>
-        <div class="table-container">
-            <table class="styled-table green-theme">
+        <h3>➤ Tabla de Frecuencias</h3>
+        <div class="table-scroll">
+            <table>
                 <thead>
-                    <tr>
-                        <th>Artículos (x)</th>
-                        <th>Frecuencia (f)</th>
-                        <th>Porcentaje (%)</th>
-                    </tr>
+                    <tr><th>Nº Hermanos ($x_i$)</th><th>Frecuencia ($f_i$)</th><th>Porcentaje</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>1</td><td>15</td><td>15%</td></tr>
-                    <tr style="border: 2px solid #ff9800;"><td><b>2 (Moda)</b></td><td><b>22</b></td><td><b>22%</b></td></tr>
-                    <tr><td>3</td><td>18</td><td>18%</td></tr>
-                    <tr><td>4</td><td>15</td><td>15%</td></tr>
-                    <tr><td>5</td><td>12</td><td>12%</td></tr>
-                    <tr><td>6</td><td>7</td><td>7%</td></tr>
-                    <tr><td>7</td><td>5</td><td>5%</td></tr>
-                    <tr><td>8</td><td>4</td><td>4%</td></tr>
-                    <tr><td>9</td><td>2</td><td>2%</td></tr>
-                    <tr><td>10</td><td>1</td><td>1%</td></tr>
+                    <tr><td>0 hermanos</td><td>16</td><td>16%</td></tr>
+                    <tr style="border: 2px solid #27ae60;"><td><b>1 hermano (Moda)</b></td><td><b>38</b></td><td><b>38%</b></td></tr>
+                    <tr><td>2 hermanos</td><td>29</td><td>29%</td></tr>
+                    <tr><td>3 hermanos</td><td>8</td><td>8%</td></tr>
+                    <tr><td>4 hermanos</td><td>5</td><td>5%</td></tr>
+                    <tr><td>5 hermanos</td><td>3</td><td>3%</td></tr>
+                    <tr><td>6 hermanos</td><td>1</td><td>1%</td></tr>
                     <tr class="total-row"><td>TOTAL</td><td>100</td><td>100%</td></tr>
                 </tbody>
             </table>
         </div>
-    </div>
+    </section>
 
-    <div class="section-continuous">
+    <section class="continuous">
         <h2>2. Datos Cuantitativos Continuos</h2>
-        <p><b>Escenario:</b> Medición de estaturas de estudiantes universitarios (en metros).<br>
-        <b>Características:</b> Números decimales, resultado de medir, agrupados en intervalos.</p>
+        <p><b>Variable:</b> Tiempo (minutos) que tardan en llegar al trabajo.<br>
+        <b>Tipo:</b> Decimal (medición, agrupado en intervalos).<br>
+        <b>Muestra:</b> 100 empleados.</p>
 
-        <h3>Matriz de Datos (100 observaciones)</h3>
-        <div class="table-container">
-            <table class="styled-table purple-theme matrix-data">
-                <tbody>
-                    <tr><td>1.75</td><td>1.68</td><td>1.82</td><td>1.59</td><td>1.70</td><td>1.65</td><td>1.78</td><td>1.62</td><td>1.74</td><td>1.80</td></tr>
-                    <tr><td>1.66</td><td>1.72</td><td>1.69</td><td>1.85</td><td>1.55</td><td>1.76</td><td>1.68</td><td>1.71</td><td>1.64</td><td>1.79</td></tr>
-                    <tr><td>1.73</td><td>1.81</td><td>1.60</td><td>1.75</td><td>1.67</td><td>1.70</td><td>1.88</td><td>1.63</td><td>1.72</td><td>1.58</td></tr>
-                    <tr><td>1.77</td><td>1.65</td><td>1.74</td><td>1.69</td><td>1.83</td><td>1.71</td><td>1.66</td><td>1.78</td><td>1.62</td><td>1.75</td></tr>
-                    <tr><td>1.61</td><td>1.76</td><td>1.84</td><td>1.68</td><td>1.70</td><td>1.57</td><td>1.73</td><td>1.79</td><td>1.65</td><td>1.72</td></tr>
-                    <tr><td>1.86</td><td>1.64</td><td>1.75</td><td>1.69</td><td>1.71</td><td>1.80</td><td>1.67</td><td>1.74</td><td>1.59</td><td>1.77</td></tr>
-                    <tr><td>1.63</td><td>1.78</td><td>1.70</td><td>1.66</td><td>1.82</td><td>1.73</td><td>1.60</td><td>1.75</td><td>1.68</td><td>1.71</td></tr>
-                    <tr><td>1.90</td><td>1.65</td><td>1.72</td><td>1.79</td><td>1.64</td><td>1.76</td><td>1.56</td><td>1.81</td><td>1.69</td><td>1.74</td></tr>
-                    <tr><td>1.67</td><td>1.73</td><td>1.85</td><td>1.70</td><td>1.62</td><td>1.78</td><td>1.71</td><td>1.66</td><td>1.75</td><td>1.83</td></tr>
-                    <tr><td>1.58</td><td>1.74</td><td>1.69</td><td>1.77</td><td>1.80</td><td>1.65</td><td>1.72</td><td>1.68</td><td>1.76</td><td>1.70</td></tr>
-                </tbody>
+        <h3>➤ Los 100 Datos (Matriz)</h3>
+        <div class="table-scroll">
+            <table class="data-matrix">
+                <tr><td>15.5</td><td>22.3</td><td>45.1</td><td>10.2</td><td>30.5</td><td>25.8</td><td>18.4</td><td>12.9</td><td>55.3</td><td>20.1</td></tr>
+                <tr><td>28.6</td><td>33.2</td><td>19.5</td><td>40.7</td><td>14.8</td><td>60.0</td><td>24.3</td><td>29.1</td><td>11.5</td><td>35.4</td></tr>
+                <tr><td>42.1</td><td>16.7</td><td>21.8</td><td>38.2</td><td>26.5</td><td>13.4</td><td>50.6</td><td>31.9</td><td>17.3</td><td>23.0</td></tr>
+                <tr><td>27.4</td><td>44.8</td><td>19.2</td><td>15.1</td><td>34.6</td><td>12.5</td><td>58.2</td><td>25.7</td><td>20.9</td><td>32.3</td></tr>
+                <tr><td>36.5</td><td>21.4</td><td>18.9</td><td>48.3</td><td>14.2</td><td>28.1</td><td>39.5</td><td>16.8</td><td>22.6</td><td>52.1</td></tr>
+                <tr><td>10.8</td><td>25.3</td><td>30.1</td><td>41.5</td><td>19.7</td><td>33.8</td><td>15.9</td><td>24.5</td><td>37.2</td><td>13.6</td></tr>
+                <tr><td>46.9</td><td>20.4</td><td>29.8</td><td>17.5</td><td>35.1</td><td>11.2</td><td>23.6</td><td>40.2</td><td>18.1</td><td>27.9</td></tr>
+                <tr><td>31.4</td><td>14.5</td><td>51.7</td><td>26.2</td><td>21.1</td><td>38.9</td><td>16.3</td><td>43.5</td><td>12.1</td><td>25.5</td></tr>
+                <tr><td>19.9</td><td>32.8</td><td>28.4</td><td>49.1</td><td>15.4</td><td>22.9</td><td>36.7</td><td>13.8</td><td>20.5</td><td>45.6</td></tr>
+                <tr><td>54.2</td><td>17.8</td><td>24.1</td><td>30.9</td><td>11.9</td><td>39.2</td><td>18.6</td><td>26.8</td><td>41.3</td><td>14.7</td></tr>
             </table>
         </div>
 
-        <h3>Tabla de Frecuencias (Por Intervalos)</h3>
-        <div class="table-container">
-            <table class="styled-table purple-theme">
+        <h3>➤ Tabla de Frecuencias (Intervalos)</h3>
+        <div class="table-scroll">
+            <table>
                 <thead>
-                    <tr>
-                        <th>Intervalo (m)</th>
-                        <th>Marca de Clase ($x_i$)</th>
-                        <th>Frecuencia ($f_i$)</th>
-                        <th>Porcentaje (%)</th>
-                    </tr>
+                    <tr><th>Tiempo (Minutos)</th><th>Marca de Clase ($x_i$)</th><th>Frecuencia ($f_i$)</th><th>%</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>1.55 - 1.59</td><td>1.57</td><td>6</td><td>6%</td></tr>
-                    <tr><td>1.60 - 1.64</td><td>1.62</td><td>10</td><td>10%</td></tr>
-                    <tr><td>1.65 - 1.69</td><td>1.67</td><td>22</td><td>22%</td></tr>
-                    <tr style="border: 2px solid #ff9800;"><td><b>1.70 - 1.74 (Moda)</b></td><td>1.72</td><td><b>26</b></td><td><b>26%</b></td></tr>
-                    <tr><td>1.75 - 1.79</td><td>1.77</td><td>21</td><td>21%</td></tr>
-                    <tr><td>1.80 - 1.84</td><td>1.82</td><td>10</td><td>10%</td></tr>
-                    <tr><td>1.85 - 1.90</td><td>1.87</td><td>5</td><td>5%</td></tr>
+                    <tr><td>10.0 - 19.9</td><td>14.95</td><td>32</td><td>32%</td></tr>
+                    <tr style="border: 2px solid #8e44ad;"><td><b>20.0 - 29.9 (Moda)</b></td><td>24.95</td><td><b>30</b></td><td><b>30%</b></td></tr>
+                    <tr><td>30.0 - 39.9</td><td>34.95</td><td>20</td><td>20%</td></tr>
+                    <tr><td>40.0 - 49.9</td><td>44.95</td><td>12</td><td>12%</td></tr>
+                    <tr><td>50.0 - 60.0</td><td>55.00</td><td>6</td><td>6%</td></tr>
                     <tr class="total-row"><td colspan="2">TOTAL</td><td>100</td><td>100%</td></tr>
                 </tbody>
             </table>
         </div>
-    </div>
+    </section>
 
-    <footer style="margin-top: 50px; color: #777; font-size: 0.8em;">
-        Generado para análisis estadístico en GitHub Pages
+    <section class="qualitative">
+        <h2>3. Datos Cualitativos (Categóricos)</h2>
+        <p><b>Variable:</b> Marca de teléfono celular.<br>
+        <b>Tipo:</b> Nominal (texto/categoría).<br>
+        <b>Muestra:</b> 100 personas encuestadas.</p>
+
+        <h3>➤ Los 100 Datos (Matriz)</h3>
+        <div class="table-scroll">
+            <table class="data-matrix">
+                <tr><td>Samsung</td><td>iPhone</td><td>Xiaomi</td><td>Samsung</td><td>Motorola</td><td>iPhone</td><td>Samsung</td><td>Huawei</td><td>iPhone</td><td>Samsung</td></tr>
+                <tr><td>Xiaomi</td><td>Samsung</td><td>iPhone</td><td>Motorola</td><td>Samsung</td><td>iPhone</td><td>Xiaomi</td><td>iPhone</td><td>Samsung</td><td>Huawei</td></tr>
+                <tr><td>iPhone</td><td>Xiaomi</td><td>Samsung</td><td>iPhone</td><td>Motorola</td><td>Samsung</td><td>Xiaomi</td><td>Samsung</td><td>iPhone</td><td>Xiaomi</td></tr>
+                <tr><td>Samsung</td><td>Motorola</td><td>iPhone</td><td>Samsung</td><td>Xiaomi</td><td>iPhone</td><td>Samsung</td><td>Huawei</td><td>iPhone</td><td>Samsung</td></tr>
+                <tr><td>Xiaomi</td><td>Samsung</td><td>iPhone</td><td>Motorola</td><td>Samsung</td><td>iPhone</td><td>Xiaomi</td><td>Samsung</td><td>iPhone</td><td>Motorola</td></tr>
+                <tr><td>iPhone</td><td>Xiaomi</td><td>Samsung</td><td>iPhone</td><td>Samsung</td><td>Xiaomi</td><td>iPhone</td><td>Samsung</td><td>Xiaomi</td><td>Samsung</td></tr>
+                <tr><td>Samsung</td><td>iPhone</td><td>Huawei</td><td>Samsung</td><td>Motorola</td><td>iPhone</td><td>Samsung</td><td>Xiaomi</td><td>iPhone</td><td>Samsung</td></tr>
+                <tr><td>Xiaomi</td><td>Samsung</td><td>iPhone</td><td>Samsung</td><td>iPhone</td><td>Xiaomi</td><td>Samsung</td><td>Motorola</td><td>iPhone</td><td>Samsung</td></tr>
+                <tr><td>iPhone</td><td>Xiaomi</td><td>Samsung</td><td>iPhone</td><td>Samsung</td><td>Huawei</td><td>iPhone</td><td>Samsung</td><td>Xiaomi</td><td>Motorola</td></tr>
+                <tr><td>Samsung</td><td>iPhone</td><td>Xiaomi</td><td>Samsung</td><td>Motorola</td><td>iPhone</td><td>Samsung</td><td>iPhone</td><td>Samsung</td><td>Xiaomi</td></tr>
+            </table>
+        </div>
+
+        <h3>➤ Tabla de Distribución</h3>
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr><th>Marca</th><th>Frecuencia ($f_i$)</th><th>Porcentaje</th></tr>
+                </thead>
+                <tbody>
+                    <tr style="border: 2px solid #2980b9;"><td><b>Samsung (Moda)</b></td><td><b>36</b></td><td><b>36%</b></td></tr>
+                    <tr><td>iPhone (Apple)</td><td>30</td><td>30%</td></tr>
+                    <tr><td>Xiaomi</td><td>19</td><td>19%</td></tr>
+                    <tr><td>Motorola</td><td>10</td><td>10%</td></tr>
+                    <tr><td>Huawei</td><td>5</td><td>5%</td></tr>
+                    <tr class="total-row"><td>TOTAL</td><td>100</td><td>100%</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer style="margin-top: 20px; color: #aaa; font-size: 0.8em; text-align: center;">
+        Página generada para GitHub Pages - Análisis Estadístico
     </footer>
 
 </body>
